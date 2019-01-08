@@ -13,17 +13,20 @@
     <style>
         #message {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 10px !important;
+            right: 25px !important;
+            min-width: 320px;
         }
 
-        .alert {
-            border-radius: 0px;
+        #message .alert {
+            width: 100%;
         }
     </style>
 </head>
 <body>
+<div id="main" class="container-fluid">
+
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -33,21 +36,25 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script>
 
-    openAlert("잘 되는가?", true);
+    openAlert("잘 되는가?", "Header", true);
 
-    function openAlert(alertMsg, autoClose) {
-        var tmpHtml = "<div id=\"message\">" +
+    function openAlert(alertMsg, alertHeader, autoClose) {
+        var tmpHtml = "<div id=\"message\" class=\"row ml-auto pull-right\">" +
             "<div class=\"alert alert-danger\">" +
             "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>" +
+            "<h4 class=\"alert-heading\">" + alertHeader + "</h4>" +
+            "<hr>\n" +
+            "<p class=\"mb-0\">" +
             alertMsg +
+            "</p>" +
             "</div>" +
             "</div>";
 
-        $("body").append(tmpHtml);
+        $("#main").append(tmpHtml);
 
         if (autoClose) {
-            window.setTimeout(function() {
-                $("#message").fadeTo(500, 0).slideUp(500, function(){
+            window.setTimeout(function () {
+                $("#message").fadeTo(500, 0).slideUp(500, function () {
                     $(this).remove();
                 });
             }, 1000);
