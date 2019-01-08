@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Alert With Javascript!</title>
+    <style>
+        #message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .alert {
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+
+    openAlert("잘 되는가?", true);
+
+    function openAlert(alertMsg, autoClose) {
+        var tmpHtml = "<div id=\"message\">" +
+            "<div class=\"alert alert-danger\">" +
+            "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>" +
+            alertMsg +
+            "</div>" +
+            "</div>";
+
+        $("body").append(tmpHtml);
+
+        if (autoClose) {
+            window.setTimeout(function() {
+                $("#message").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 1000);
+        }
+    }
+
+
+</script>
+</body>
+</html>
